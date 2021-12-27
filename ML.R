@@ -1364,21 +1364,7 @@ performance(prediction_values_gene2 ,"auc")
 plot((perf_CNN_gene2),colorize=FALSE, col="black") # plot ROC curve
 lines(c(0,1),c(0,1),col = "gray", lty = 4 )
 
-pred_comb_CNN<-0.5*yhat_keras_class_vec_gene2[299:596]+0.5*yhat_keras_class_vec_gene1[1:298]
-prediction_values_comb_CNN <- ROCR::prediction(as.numeric(pred_comb_CNN),test_GWAS_gene2_mat[,7] )
-perf_CNN_comb <- performance(prediction_values_comb_CNN,"tpr","fpr")
-performance(prediction_values_comb_CNN ,"auc")
 
-plot((perf_CNN_comb),colorize=FALSE, col="black") # plot ROC curve
-lines(c(0,1),c(0,1),col = "gray", lty = 4 )
-
-pred_comb_all<-0.33*yhat_keras_class_vec_gene2[299:596]+0.33*yhat_keras_class_vec_gene1[1:298]+0.33*pred_comb[,2]
-prediction_values_comb_all <- ROCR::prediction(as.numeric(pred_comb_all),test_GWAS_gene2_mat[,7] )
-perf_CNN_comb_all <- performance(prediction_values_comb_all,"tpr","fpr")
-performance(prediction_values_comb_all ,"auc")
-
-plot((perf_CNN_comb_all),colorize=FALSE, col="black") # plot ROC curve
-lines(c(0,1),c(0,1),col = "gray", lty = 4 )
 
 
 ##tree plot
